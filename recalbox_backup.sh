@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script de Backup para Saves do Recalbox
-# SOURCE: https://github.com/guizmo-silva/recalbox-saves-backup-linux
+# License: MIT
 # Author: Guilherme "Guizmo" Silva
 # Data: $(date +%Y-%m-%d)
 
@@ -113,6 +113,7 @@ TEXTS[pt_restore_info]="Informações da restauração:"
 TEXTS[pt_folders_copied]="Pastas copiadas:"
 TEXTS[pt_copied_success]="copiada com sucesso"
 TEXTS[pt_copy_failed]="Falha ao copiar"
+TEXTS[pt_some_deps_missing]="Algumas dependências ainda estão faltando:"
 
 # Inglês
 TEXTS[en_title]="RECALBOX SAVES BACKUP"
@@ -207,6 +208,7 @@ TEXTS[en_restore_info]="Restore information:"
 TEXTS[en_folders_copied]="Folders copied:"
 TEXTS[en_copied_success]="copied successfully"
 TEXTS[en_copy_failed]="Failed to copy"
+TEXTS[en_some_deps_missing]="Some dependencies are still missing:"
 
 # Espanhol
 TEXTS[es_title]="RESPALDO DE SAVES - RECALBOX"
@@ -301,6 +303,7 @@ TEXTS[es_restore_info]="Información de la restauración:"
 TEXTS[es_folders_copied]="Carpetas copiadas:"
 TEXTS[es_copied_success]="copiada exitosamente"
 TEXTS[es_copy_failed]="Falló al copiar"
+TEXTS[es_some_deps_missing]="Algunas dependencias aún faltan:"
 
 # Função para obter texto traduzido
 get_text() {
@@ -360,6 +363,20 @@ select_language() {
 detect_distribution() {
     if [ -f /etc/os-release ]; then
         . /etc/os-release
+        
+        # Verifica se é Nobara especificamente
+        if [[ "$NAME" == *"Nobara"* ]] || [[ "$ID" == "nobara" ]] || [[ "$ID_LIKE" == *"nobara"* ]]; then
+            echo "nobara"
+            return
+        fi
+        
+        # Verifica se é baseado em Fedora
+        if [[ "$ID_LIKE" == *"fedora"* ]] || [[ "$ID" == "fedora" ]]; then
+            echo "fedora"
+            return
+        fi
+        
+        # Retorna o ID detectado
         echo "$ID"
     elif [ -f /etc/redhat-release ]; then
         echo "rhel"
@@ -380,7 +397,7 @@ get_package_names() {
         ubuntu|debian|linuxmint|pop)
             echo "samba-client cifs-utils rsync pv"
             ;;
-        fedora|rhel|centos|rocky|almalinux)
+        fedora|rhel|centos|rocky|almalinux|nobara)
             echo "samba-client cifs-utils rsync pv"
             ;;
         arch|manjaro|endeavouros)
@@ -404,7 +421,7 @@ get_install_command() {
         ubuntu|debian|linuxmint|pop)
             echo "sudo apt update && sudo apt install -y $packages"
             ;;
-        fedora)
+        fedora|nobara)
             echo "sudo dnf install -y $packages"
             ;;
         rhel|centos|rocky|almalinux)
@@ -499,16 +516,18 @@ check_system_dependencies() {
         echo "  $install_cmd"
         echo
         
+        # Sempre pergunta se quer instalar as dependências
         local prompt_text="$(get_text 'install_auto')"
         read -p "$prompt_text " AUTO_INSTALL
         
         local yes_pattern="^[SsYy]$"
         if [[ $AUTO_INSTALL =~ $yes_pattern ]]; then
             if install_dependencies "$distro" "$packages"; then
-                print_success "$(get_text 'install_success') $(get_text 'checking_deps')"
                 echo
-                # Verifica novamente após a instalação
-                return $(check_system_dependencies)
+                print_info "$(get_text 'checking_deps')"
+                # Verifica novamente após a instalação para confirmar
+                check_system_dependencies_quiet
+                return $?
             else
                 print_error "$(get_text 'install_failed')"
                 print_info "$(get_text 'install_manually') $install_cmd"
@@ -523,6 +542,36 @@ check_system_dependencies() {
         print_error "$(get_text 'distro_unsupported') '$distro'"
         print_info "$(get_text 'install_manually'):"
         echo "  $packages"
+        return 1
+    fi
+}
+
+# Função para verificar dependências silenciosamente (para re-verificação)
+check_system_dependencies_quiet() {
+    local missing_deps=()
+    
+    # Verifica cada dependência
+    if ! command -v smbclient &> /dev/null; then
+        missing_deps+=("smbclient")
+    fi
+    
+    if ! command -v mount.cifs &> /dev/null; then
+        missing_deps+=("mount.cifs")
+    fi
+    
+    if ! command -v rsync &> /dev/null; then
+        missing_deps+=("rsync")
+    fi
+    
+    if ! command -v pv &> /dev/null; then
+        missing_deps+=("pv")
+    fi
+    
+    if [ ${#missing_deps[@]} -eq 0 ]; then
+        print_success "$(get_text 'all_deps_ok')"
+        return 0
+    else
+        print_warning "$(get_text 'some_deps_missing') ${missing_deps[*]}"
         return 1
     fi
 }
