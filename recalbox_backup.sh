@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # Script de Backup para Saves do Recalbox
-# License: MIT
-# Author: Guilherme 'Guizmo' Silva
-# Source code: https://github.com/guizmo-silva/recalbox-saves-backup-linux
-# Date: $(date +%Y-%m-%d)
+# SOURCE: https://github.com/guizmo-silva/recalbox-saves-backup-linux
+# Author: Guilherme "Guizmo" Silva
+# Data: $(date +%Y-%m-%d)
 
 # Configurações
 RECALBOX_PATH="//recalbox.local/share/saves"
@@ -26,6 +25,7 @@ TEXTS[pt_title]="BACKUP DE SAVES - RECALBOX"
 TEXTS[pt_menu_deps]="Verificar dependências do sistema"
 TEXTS[pt_menu_path]="Verificar caminho dos saves"
 TEXTS[pt_menu_backup]="Realizar backup"
+TEXTS[pt_menu_restore]="Restaurar saves"
 TEXTS[pt_menu_exit]="Sair"
 TEXTS[pt_choose_option]="Escolha uma opção"
 TEXTS[pt_press_enter]="Pressione Enter para continuar..."
@@ -96,12 +96,30 @@ TEXTS[pt_rsync_error]="Erro durante a cópia com rsync"
 TEXTS[pt_root_warning]="Não é recomendado executar este script como root"
 TEXTS[pt_run_as_user]="Execute como usuário normal (o script pedirá sudo quando necessário)"
 TEXTS[pt_or]="ou"
+TEXTS[pt_starting_restore]="Iniciando processo de restauração..."
+TEXTS[pt_enter_backup_path]="Digite o caminho completo da pasta de backup:"
+TEXTS[pt_backup_path_empty]="Caminho do backup não pode estar vazio"
+TEXTS[pt_backup_not_exist]="Pasta de backup não existe:"
+TEXTS[pt_backup_not_readable]="Sem permissão de leitura na pasta:"
+TEXTS[pt_checking_backup_content]="Verificando conteúdo do backup..."
+TEXTS[pt_backup_seems_empty]="A pasta de backup parece estar vazia"
+TEXTS[pt_found_folders]="Encontradas as seguintes pastas:"
+TEXTS[pt_confirm_restore]="Deseja continuar com a restauração? (s/N):"
+TEXTS[pt_restore_cancelled]="Restauração cancelada"
+TEXTS[pt_copying_from]="Copiando saves de:"
+TEXTS[pt_restore_success]="Restauração realizada com sucesso!"
+TEXTS[pt_restore_failed]="Falha ao realizar a restauração"
+TEXTS[pt_restore_info]="Informações da restauração:"
+TEXTS[pt_folders_copied]="Pastas copiadas:"
+TEXTS[pt_copied_success]="copiada com sucesso"
+TEXTS[pt_copy_failed]="Falha ao copiar"
 
 # Inglês
 TEXTS[en_title]="RECALBOX SAVES BACKUP"
 TEXTS[en_menu_deps]="Check system dependencies"
 TEXTS[en_menu_path]="Check saves path"
 TEXTS[en_menu_backup]="Perform backup"
+TEXTS[en_menu_restore]="Restore saves"
 TEXTS[en_menu_exit]="Exit"
 TEXTS[en_choose_option]="Choose an option"
 TEXTS[en_press_enter]="Press Enter to continue..."
@@ -172,12 +190,30 @@ TEXTS[en_rsync_error]="Error during rsync copy"
 TEXTS[en_root_warning]="It's not recommended to run this script as root"
 TEXTS[en_run_as_user]="Run as normal user (script will ask for sudo when needed)"
 TEXTS[en_or]="or"
+TEXTS[en_starting_restore]="Starting restore process..."
+TEXTS[en_enter_backup_path]="Enter the full path to the backup folder:"
+TEXTS[en_backup_path_empty]="Backup path cannot be empty"
+TEXTS[en_backup_not_exist]="Backup folder does not exist:"
+TEXTS[en_backup_not_readable]="No read permission in folder:"
+TEXTS[en_checking_backup_content]="Checking backup content..."
+TEXTS[en_backup_seems_empty]="The backup folder seems to be empty"
+TEXTS[en_found_folders]="Found the following folders:"
+TEXTS[en_confirm_restore]="Do you want to continue with the restore? (y/N):"
+TEXTS[en_restore_cancelled]="Restore cancelled"
+TEXTS[en_copying_from]="Copying saves from:"
+TEXTS[en_restore_success]="Restore completed successfully!"
+TEXTS[en_restore_failed]="Failed to perform restore"
+TEXTS[en_restore_info]="Restore information:"
+TEXTS[en_folders_copied]="Folders copied:"
+TEXTS[en_copied_success]="copied successfully"
+TEXTS[en_copy_failed]="Failed to copy"
 
 # Espanhol
 TEXTS[es_title]="RESPALDO DE SAVES - RECALBOX"
 TEXTS[es_menu_deps]="Verificar dependencias del sistema"
 TEXTS[es_menu_path]="Verificar ruta de saves"
 TEXTS[es_menu_backup]="Realizar respaldo"
+TEXTS[es_menu_restore]="Restaurar saves"
 TEXTS[es_menu_exit]="Salir"
 TEXTS[es_choose_option]="Elige una opción"
 TEXTS[es_press_enter]="Presiona Enter para continuar..."
@@ -248,6 +284,23 @@ TEXTS[es_rsync_error]="Error durante la copia con rsync"
 TEXTS[es_root_warning]="No se recomienda ejecutar este script como root"
 TEXTS[es_run_as_user]="Ejecuta como usuario normal (el script pedirá sudo cuando sea necesario)"
 TEXTS[es_or]="o"
+TEXTS[es_starting_restore]="Iniciando proceso de restauración..."
+TEXTS[es_enter_backup_path]="Ingresa la ruta completa de la carpeta de respaldo:"
+TEXTS[es_backup_path_empty]="La ruta del respaldo no puede estar vacía"
+TEXTS[es_backup_not_exist]="La carpeta de respaldo no existe:"
+TEXTS[es_backup_not_readable]="Sin permisos de lectura en la carpeta:"
+TEXTS[es_checking_backup_content]="Verificando contenido del respaldo..."
+TEXTS[es_backup_seems_empty]="La carpeta de respaldo parece estar vacía"
+TEXTS[es_found_folders]="Se encontraron las siguientes carpetas:"
+TEXTS[es_confirm_restore]="¿Deseas continuar con la restauración? (s/N):"
+TEXTS[es_restore_cancelled]="Restauración cancelada"
+TEXTS[es_copying_from]="Copiando saves desde:"
+TEXTS[es_restore_success]="¡Restauración realizada exitosamente!"
+TEXTS[es_restore_failed]="Falló al realizar la restauración"
+TEXTS[es_restore_info]="Información de la restauración:"
+TEXTS[es_folders_copied]="Carpetas copiadas:"
+TEXTS[es_copied_success]="copiada exitosamente"
+TEXTS[es_copy_failed]="Falló al copiar"
 
 # Função para obter texto traduzido
 get_text() {
@@ -492,6 +545,126 @@ check_connectivity() {
     return 0
 }
 
+# Função para realizar a restauração dos saves
+perform_restore() {
+    print_info "$(get_text 'starting_restore')"
+    
+    # Verifica se o caminho do Recalbox existe primeiro
+    print_info "$(get_text 'checking_recalbox')"
+    if ! check_connectivity; then
+        print_error "$(get_text 'cannot_continue')"
+        return 1
+    fi
+    
+    # Solicita o diretório do backup
+    echo
+    read -p "$(get_text 'enter_backup_path') " BACKUP_PATH
+    
+    # Verifica se o usuário digitou algo
+    if [ -z "$BACKUP_PATH" ]; then
+        print_error "$(get_text 'backup_path_empty')"
+        return 1
+    fi
+    
+    # Expande ~ para o diretório home se necessário
+    BACKUP_PATH="${BACKUP_PATH/#\~/$HOME}"
+    
+    # Verifica se o diretório de backup existe
+    if [ ! -d "$BACKUP_PATH" ]; then
+        print_error "$(get_text 'backup_not_exist') $BACKUP_PATH"
+        return 1
+    fi
+    
+    # Verifica se o diretório de backup é legível
+    if [ ! -r "$BACKUP_PATH" ]; then
+        print_error "$(get_text 'backup_not_readable') $BACKUP_PATH"
+        return 1
+    fi
+    
+    # Verifica o conteúdo do backup
+    print_info "$(get_text 'checking_backup_content')"
+    
+    # Lista as pastas dentro do backup (ignora arquivos)
+    local folders=($(find "$BACKUP_PATH" -maxdepth 1 -type d ! -path "$BACKUP_PATH" | sort))
+    
+    if [ ${#folders[@]} -eq 0 ]; then
+        print_error "$(get_text 'backup_seems_empty')"
+        return 1
+    fi
+    
+    # Mostra as pastas encontradas
+    print_info "$(get_text 'found_folders')"
+    for folder in "${folders[@]}"; do
+        local folder_name=$(basename "$folder")
+        local folder_size=$(du -sh "$folder" 2>/dev/null | cut -f1)
+        local file_count=$(find "$folder" -type f 2>/dev/null | wc -l)
+        echo "  - $folder_name ($folder_size, $file_count $(get_text 'files'))"
+    done
+    echo
+    
+    # Confirma a restauração
+    read -p "$(get_text 'confirm_restore') " CONFIRM_RESTORE
+    local yes_pattern="^[SsYy]$"
+    if [[ ! $CONFIRM_RESTORE =~ $yes_pattern ]]; then
+        print_error "$(get_text 'restore_cancelled')"
+        return 1
+    fi
+    
+    # Monta o compartilhamento SMB
+    if ! mount_smb; then
+        return 1
+    fi
+    
+    print_info "$(get_text 'copying_from') $BACKUP_PATH"
+    echo
+    
+    # Conta total de arquivos para progresso
+    local total_files=$(find "${folders[@]}" -type f 2>/dev/null | wc -l)
+    local copied_files=0
+    local copied_folders=0
+    
+    # Copia cada pasta individualmente
+    for folder in "${folders[@]}"; do
+        local folder_name=$(basename "$folder")
+        local folder_size=$(du -sh "$folder" 2>/dev/null | cut -f1)
+        local files_in_folder=$(find "$folder" -type f 2>/dev/null | wc -l)
+        
+        print_info "$(get_text 'copying_to') $folder_name ($folder_size, $files_in_folder $(get_text 'files'))..."
+        
+        # Usa rsync para cópia simples e confiável
+        if rsync -a "$folder/" "$MOUNT_POINT/$folder_name/" 2>/dev/null; then
+            ((copied_folders++))
+            copied_files=$((copied_files + files_in_folder))
+            print_success "  ✓ $folder_name $(get_text 'copied_success')"
+        else
+            print_error "  ✗ $(get_text 'copy_failed') $folder_name"
+        fi
+    done
+    
+    # Verifica se pelo menos uma pasta foi copiada
+    if [ $copied_folders -gt 0 ]; then
+        print_success "$(get_text 'restore_success')"
+        
+        # Mostra informações da restauração
+        echo
+        print_info "$(get_text 'restore_info')"
+        echo "  - $(get_text 'location') $RECALBOX_PATH"
+        echo "  - $(get_text 'folders_copied') $copied_folders"
+        echo "  - $(get_text 'files') $copied_files"
+        echo "  - $(get_text 'date') $(date)"
+        
+    else
+        print_error "$(get_text 'restore_failed')"
+        unmount_smb
+        return 1
+    fi
+    
+    # Desmonta o compartilhamento
+    unmount_smb
+    
+    return 0
+}
+
 # Função para montar temporariamente (para verificações)
 mount_smb_temp() {
     if [ ! -d "$MOUNT_POINT" ]; then
@@ -585,8 +758,68 @@ unmount_smb() {
     fi
 }
 
-# Função para copiar arquivos com barra de progresso
-copy_with_progress() {
+# Função para copiar arquivos com barra de progresso (versão para backup)
+copy_with_progress_backup() {
+    local source="$1"
+    local destination="$2"
+    
+    print_info "$(get_text 'calculating_total')"
+    
+    # Método mais preciso: calcula tamanho dos arquivos individuais
+    local total_size=0
+    while IFS= read -r -d '' file; do
+        if [ -f "$file" ]; then
+            local file_size=$(stat -c%s "$file" 2>/dev/null || echo "0")
+            total_size=$((total_size + file_size))
+        fi
+    done < <(find "$source" -type f -print0 2>/dev/null)
+    
+    # Se não conseguiu calcular ou está muito pequeno, usa du como fallback
+    if [ "$total_size" -lt 1024 ]; then
+        total_size=$(du -sb "$source" | cut -f1)
+    fi
+    
+    # Adiciona margem de 5% para compensar overhead do tar
+    total_size=$((total_size + (total_size / 20)))
+    
+    local total_size_human=$(du -sh "$source" | cut -f1)
+    
+    print_info "$(get_text 'total_copy') $total_size_human"
+    print_info "$(get_text 'starting_copy')"
+    echo
+    
+    # Verifica se o pv está disponível
+    if command -v pv &> /dev/null; then
+        # Usa tar com pv para copiar apenas o conteúdo (não a pasta pai)
+        tar -cf - -C "$source" . | \
+        pv -s "$total_size" -p -t -e -r -b | \
+        tar -xf - -C "$destination"
+        
+        local exit_code=${PIPESTATUS[0]}
+        echo
+        
+        if [ $exit_code -eq 0 ]; then
+            print_success "$(get_text 'copy_success')"
+            return 0
+        else
+            print_error "$(get_text 'copy_error') $exit_code)"
+            return 1
+        fi
+    else
+        # Fallback para rsync copiando apenas o conteúdo
+        print_warning "$(get_text 'using_rsync')"
+        if rsync -av --progress "$source/" "$destination/"; then
+            print_success "$(get_text 'copy_success')"
+            return 0
+        else
+            print_error "$(get_text 'rsync_error')"
+            return 1
+        fi
+    fi
+}
+
+# Função para copiar arquivos com barra de progresso (versão para restauração)
+copy_with_progress_restore() {
     local source="$1"
     local destination="$2"
     
@@ -693,23 +926,20 @@ perform_backup() {
     # Cria o diretório de destino
     mkdir -p "$BACKUP_FULL_PATH"
     
-    # Realiza a cópia com barra de progresso
-    if copy_with_progress "$MOUNT_POINT" "$BACKUP_DEST"; then
-        # Renomeia o diretório copiado para o nome correto
-        if [ -d "$BACKUP_DEST/$(basename "$MOUNT_POINT")" ]; then
-            mv "$BACKUP_DEST/$(basename "$MOUNT_POINT")" "$BACKUP_FULL_PATH"
-        fi
-        
+    # Realiza a cópia com barra de progresso (apenas o conteúdo dos saves)
+    if copy_with_progress_backup "$MOUNT_POINT" "$BACKUP_FULL_PATH"; then
         print_success "$(get_text 'backup_success')"
         
         # Mostra informações do backup
         BACKUP_SIZE=$(du -sh "$BACKUP_FULL_PATH" | cut -f1)
         FILE_COUNT=$(find "$BACKUP_FULL_PATH" -type f | wc -l)
+        FOLDER_COUNT=$(find "$BACKUP_FULL_PATH" -maxdepth 1 -type d ! -path "$BACKUP_FULL_PATH" | wc -l)
         
         echo
         print_info "$(get_text 'backup_info')"
         echo "  - $(get_text 'location') $BACKUP_FULL_PATH"
         echo "  - $(get_text 'size') $BACKUP_SIZE"
+        echo "  - $(get_text 'folders_copied') $FOLDER_COUNT"
         echo "  - $(get_text 'files') $FILE_COUNT"
         echo "  - $(get_text 'date') $(date)"
         
@@ -737,7 +967,8 @@ show_menu() {
     echo "1) $(get_text 'menu_deps')"
     echo "2) $(get_text 'menu_path')"
     echo "3) $(get_text 'menu_backup')"
-    echo "4) $(get_text 'menu_exit')"
+    echo "4) $(get_text 'menu_restore')"
+    echo "5) $(get_text 'menu_exit')"
     echo
 }
 
@@ -754,7 +985,7 @@ main() {
     
     while true; do
         show_menu
-        read -p "$(get_text 'choose_option') [1-4]: " OPTION
+        read -p "$(get_text 'choose_option') [1-5]: " OPTION
         
         case $OPTION in
             1)
@@ -776,13 +1007,19 @@ main() {
                 read -p "$(get_text 'press_enter')"
                 ;;
             4)
+                echo
+                perform_restore
+                echo
+                read -p "$(get_text 'press_enter')"
+                ;;
+            5)
                 print_info "$(get_text 'exiting')"
                 # Cleanup: desmonta se estiver montado
                 unmount_smb 2>/dev/null
                 exit 0
                 ;;
             *)
-                print_error "$(get_text 'invalid_option') 1, 2, 3 $(get_text 'or') 4."
+                print_error "$(get_text 'invalid_option') 1, 2, 3, 4 $(get_text 'or') 5."
                 sleep 2
                 ;;
         esac
