@@ -491,6 +491,14 @@ Este proyecto está bajo la licencia MIT. Ver el archivo `LICENSE` para más det
 
 ---
 
+## 🔗 Links Relacionados / Related Links / Enlaces Relacionados
+
+- 🪟 [Versão Windows](https://github.com/guizmo-silva/recalbox-saves-backup-windows) - Script para Windows
+- 🎮 [Recalbox Official](https://www.recalbox.com/) - Site oficial do Recalbox
+- 📚 [Documentação](https://wiki.recalbox.com/) - Wiki oficial do Recalbox
+
+---
+
 <div align="center">
 
 **⭐ Se este projeto foi útil, considere dar uma estrela!**
