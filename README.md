@@ -67,6 +67,48 @@ O **Recalbox Backup Script** é uma solução completa e intuitiva para gerencia
 - Compartilhamento SMB habilitado no Recalbox
 - Permissões de sudo para instalação de pacotes
 
+#### 📦 Dependências Necessárias
+
+O script requer os seguintes pacotes para funcionar corretamente:
+
+| Pacote | Função | Obrigatório |
+|--------|--------|-------------|
+| `samba-client` | Acesso a compartilhamentos SMB | ✅ Sim |
+| `cifs-utils` | Montagem de sistemas de arquivos CIFS/SMB | ✅ Sim |
+| `rsync` | Sincronização e cópia de arquivos | ✅ Sim |
+| `pv` | Barra de progresso durante backup | ⚠️ Recomendado |
+
+#### 🔧 Instalação Manual das Dependências
+
+Se preferir instalar as dependências manualmente antes de executar o script:
+
+**Ubuntu/Debian/Linux Mint/Pop!_OS:**
+```bash
+sudo apt update && sudo apt install -y samba-client cifs-utils rsync pv
+```
+
+**Fedora/Nobara:**
+```bash
+sudo dnf install -y samba-client cifs-utils rsync pv
+```
+
+**RHEL/CentOS/Rocky/AlmaLinux:**
+```bash
+sudo yum install -y samba-client cifs-utils rsync pv
+```
+
+**Arch Linux/Manjaro/EndeavourOS:**
+```bash
+sudo pacman -S samba cifs-utils rsync pv
+```
+
+**openSUSE/SLES:**
+```bash
+sudo zypper install -y samba-client cifs-utils rsync pv
+```
+
+> **💡 Dica:** O script detecta automaticamente sua distribuição e oferece instalar as dependências que estiverem faltando. Você pode usar a **Opção 1** do menu para verificar e instalar automaticamente!
+
 ### 🚀 Instalação
 
 1. **Clone o repositório ou baixe o script:**
@@ -122,6 +164,27 @@ chmod +x recalbox_backup.sh
 | EndeavourOS | `pacman` | ✅ |
 | openSUSE | `zypper` | ✅ |
 
+### 🔧 Solução de Problemas
+
+#### Problemas Comuns:
+
+**❌ "Não foi possível conectar ao recalbox.local"**
+- Verifique se o Recalbox está ligado e conectado à rede
+- Confirme que seu computador está na mesma rede
+- Teste: `ping recalbox.local`
+
+**❌ "Compartilhamento SMB não acessível"**
+- Habilite o compartilhamento de rede no Recalbox
+- Vá em: Sistema → Configurações de Rede → Ativar SAMBA
+
+**❌ "Permissão negada"**
+- Execute o script como usuário normal (não root)
+- O script pedirá sudo apenas quando necessário
+
+**❌ "Comando não encontrado"**
+- Execute a verificação de dependências (Opção 1)
+- Instale as dependências manualmente se preferir
+
 ---
 
 ## 🇺🇸 English
@@ -146,6 +209,48 @@ The **Recalbox Backup Script** is a complete and intuitive solution for managing
 - Recalbox on the same network
 - SMB sharing enabled on Recalbox
 - Sudo permissions for package installation
+
+#### 📦 Required Dependencies
+
+The script requires the following packages to work correctly:
+
+| Package | Function | Required |
+|---------|----------|----------|
+| `samba-client` | Access to SMB shares | ✅ Yes |
+| `cifs-utils` | CIFS/SMB filesystem mounting | ✅ Yes |
+| `rsync` | File synchronization and copying | ✅ Yes |
+| `pv` | Progress bar during backup | ⚠️ Recommended |
+
+#### 🔧 Manual Dependencies Installation
+
+If you prefer to install dependencies manually before running the script:
+
+**Ubuntu/Debian/Linux Mint/Pop!_OS:**
+```bash
+sudo apt update && sudo apt install -y samba-client cifs-utils rsync pv
+```
+
+**Fedora/Nobara:**
+```bash
+sudo dnf install -y samba-client cifs-utils rsync pv
+```
+
+**RHEL/CentOS/Rocky/AlmaLinux:**
+```bash
+sudo yum install -y samba-client cifs-utils rsync pv
+```
+
+**Arch Linux/Manjaro/EndeavourOS:**
+```bash
+sudo pacman -S samba cifs-utils rsync pv
+```
+
+**openSUSE/SLES:**
+```bash
+sudo zypper install -y samba-client cifs-utils rsync pv
+```
+
+> **💡 Tip:** The script automatically detects your distribution and offers to install missing dependencies. You can use **Option 1** from the menu to check and install automatically!
 
 ### 🚀 Installation
 
@@ -202,6 +307,27 @@ chmod +x recalbox_backup.sh
 | EndeavourOS | `pacman` | ✅ |
 | openSUSE | `zypper` | ✅ |
 
+### 🔧 Troubleshooting
+
+#### Common Issues:
+
+**❌ "Could not connect to recalbox.local"**
+- Check if Recalbox is powered on and connected to network
+- Confirm your computer is on the same network
+- Test: `ping recalbox.local`
+
+**❌ "SMB share not accessible"**
+- Enable network sharing on Recalbox
+- Go to: System → Network Settings → Enable SAMBA
+
+**❌ "Permission denied"**
+- Run the script as normal user (not root)
+- Script will ask for sudo only when necessary
+
+**❌ "Command not found"**
+- Run dependency check (Option 1)
+- Install dependencies manually if preferred
+
 ---
 
 ## 🇪🇸 Español
@@ -226,6 +352,48 @@ El **Recalbox Backup Script** es una solución completa e intuitiva para gestion
 - Recalbox en la misma red
 - Compartir SMB habilitado en Recalbox
 - Permisos sudo para instalación de paquetes
+
+#### 📦 Dependencias Necesarias
+
+El script requiere los siguientes paquetes para funcionar correctamente:
+
+| Paquete | Función | Requerido |
+|---------|---------|-----------|
+| `samba-client` | Acceso a compartidos SMB | ✅ Sí |
+| `cifs-utils` | Montaje de sistemas de archivos CIFS/SMB | ✅ Sí |
+| `rsync` | Sincronización y copia de archivos | ✅ Sí |
+| `pv` | Barra de progreso durante respaldo | ⚠️ Recomendado |
+
+#### 🔧 Instalación Manual de Dependencias
+
+Si prefieres instalar las dependencias manualmente antes de ejecutar el script:
+
+**Ubuntu/Debian/Linux Mint/Pop!_OS:**
+```bash
+sudo apt update && sudo apt install -y samba-client cifs-utils rsync pv
+```
+
+**Fedora/Nobara:**
+```bash
+sudo dnf install -y samba-client cifs-utils rsync pv
+```
+
+**RHEL/CentOS/Rocky/AlmaLinux:**
+```bash
+sudo yum install -y samba-client cifs-utils rsync pv
+```
+
+**Arch Linux/Manjaro/EndeavourOS:**
+```bash
+sudo pacman -S samba cifs-utils rsync pv
+```
+
+**openSUSE/SLES:**
+```bash
+sudo zypper install -y samba-client cifs-utils rsync pv
+```
+
+> **💡 Consejo:** El script detecta automáticamente tu distribución y ofrece instalar las dependencias faltantes. ¡Puedes usar la **Opción 1** del menú para verificar e instalar automáticamente!
 
 ### 🚀 Instalación
 
@@ -281,6 +449,27 @@ chmod +x recalbox_backup.sh
 | Manjaro | `pacman` | ✅ |
 | EndeavourOS | `pacman` | ✅ |
 | openSUSE | `zypper` | ✅ |
+
+### 🔧 Solución de Problemas
+
+#### Problemas Comunes:
+
+**❌ "No se pudo conectar a recalbox.local"**
+- Verifica que Recalbox esté encendido y conectado a la red
+- Confirma que tu computadora está en la misma red
+- Prueba: `ping recalbox.local`
+
+**❌ "Compartir SMB no accesible"**
+- Habilita el compartir de red en Recalbox
+- Ve a: Sistema → Configuración de Red → Activar SAMBA
+
+**❌ "Permiso denegado"**
+- Ejecuta el script como usuario normal (no root)
+- El script pedirá sudo solo cuando sea necesario
+
+**❌ "Comando no encontrado"**
+- Ejecuta la verificación de dependencias (Opción 1)
+- Instala las dependencias manualmente si prefieres
 
 ---
 
