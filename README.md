@@ -121,7 +121,7 @@ sudo zypper install -y samba-client cifs-utils rsync pv
 1. **[Baixe o script](https://github.com/guizmo-silva/recalbox-saves-backup-linux/releases/tag/v1.0.0) ou clone o repositório:**
 
 ```bash
-wget https://raw.githubusercontent.com/seu-usuario/recalbox-backup-script/main/recalbox_backup.sh
+wget https://raw.githubusercontent.com/guizmo-silva/recalbox-saves-backup-linux/main/recalbox_backup.sh
 ```
 
 2. **Torne o script executável:**
@@ -261,7 +261,7 @@ sudo zypper install -y samba-client cifs-utils rsync pv
 1. **Clone the repository or [download the script](https://github.com/guizmo-silva/recalbox-saves-backup-linux/releases/tag/v1.0.0):**
 
 ```bash
-wget https://raw.githubusercontent.com/your-username/recalbox-backup-script/main/recalbox_backup.sh
+wget https://raw.githubusercontent.com/guizmo-silva/recalbox-saves-backup-linux/main/recalbox_backup.sh
 ```
 
 2. **Make the script executable:**
@@ -401,7 +401,7 @@ sudo zypper install -y samba-client cifs-utils rsync pv
 1. **Clona el repositorio o [descarga el script](https://github.com/guizmo-silva/recalbox-saves-backup-linux/releases/tag/v1.0.0):**
 
 ```bash
-wget https://raw.githubusercontent.com/tu-usuario/recalbox-backup-script/main/recalbox_backup.sh
+wget https://raw.githubusercontent.com/guizmo-silva/recalbox-saves-backup-linux/main/recalbox_backup.sh
 ```
 
 2. **Haz el script ejecutable:**
