@@ -118,7 +118,7 @@ sudo zypper install -y samba-client cifs-utils rsync pv
 
 ### 🚀 Instalação
 
-1. **[Baixe o script](https://github.com/guizmo-silva/recalbox-saves-backup-linux/releases/tag/v1.0.0) ou clone o repositório:**
+1. **Baixe o arquivo com o comando abaixo ou [faça o download pelo navegador](https://github.com/guizmo-silva/recalbox-saves-backup-linux/releases/tag/v1.0.0):**
 
 ```bash
 wget https://raw.githubusercontent.com/guizmo-silva/recalbox-saves-backup-linux/main/recalbox_backup.sh
