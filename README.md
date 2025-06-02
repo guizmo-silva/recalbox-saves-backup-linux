@@ -58,9 +58,7 @@ Script criado para facilitar o processo de backup da pasta de saves do Recalbox.
 - 🔍 **Verificação de Dependências**: Detecta e instala automaticamente pacotes necessários
 - 📡 **Verificação de Conectividade**: Testa conexão com o Recalbox na rede
 - 💾 **Backup Completo**: Cria backups organizados com timestamp
-- 🔄 **Restauração Inteligente**: Restaura saves seletivamente
 - 🌍 **Interface Multilíngue**: Português, Inglês e Espanhol
-- 📊 **Barra de Progresso**: Acompanhe o progresso do backup em tempo real
 - 🖥️ **Detecção Automática**: Identifica sua distribuição Linux automaticamente
 
 ### 📋 Pré-requisitos
@@ -200,9 +198,7 @@ Script created to facilitate the backup process of the Recalbox saves folder. Us
 - 🔍 **Dependency Check**: Automatically detects and installs required packages
 - 📡 **Connectivity Verification**: Tests connection with Recalbox on network
 - 💾 **Complete Backup**: Creates organized backups with timestamp
-- 🔄 **Smart Restoration**: Selectively restores saves
 - 🌍 **Multilingual Interface**: Portuguese, English, and Spanish
-- 📊 **Progress Bar**: Track backup progress in real-time
 - 🖥️ **Auto Detection**: Automatically identifies your Linux distribution
 
 ### 📋 Prerequisites
@@ -342,9 +338,7 @@ Script creado para facilitar el proceso de respaldo de la carpeta de guardados d
 - 🔍 **Verificación de Dependencias**: Detecta e instala automáticamente paquetes necesarios
 - 📡 **Verificación de Conectividad**: Prueba conexión con Recalbox en la red
 - 💾 **Respaldo Completo**: Crea respaldos organizados con timestamp
-- 🔄 **Restauración Inteligente**: Restaura saves selectivamente
 - 🌍 **Interfaz Multiidioma**: Portugués, Inglés y Español
-- 📊 **Barra de Progreso**: Sigue el progreso del respaldo en tiempo real
 - 🖥️ **Detección Automática**: Identifica tu distribución Linux automáticamente
 
 ### 📋 Prerrequisitos
