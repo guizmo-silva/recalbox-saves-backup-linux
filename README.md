@@ -1,4 +1,4 @@
-# 🎮 Recalbox Backup Script
+# 🎮 Recalbox Save files Backup Script for Linux
 
 <div align="center">
 
